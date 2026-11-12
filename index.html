@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GREENBLI | About Us</title>
+  <style>
+    :root{
+      --green:#1fb86a;
+      --green-dark:#12824b;
+      --blue:#1f7ae0;
+      --blue-dark:#1456a3;
+      --bg:#f4fbf7;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --white:#ffffff;
+      --card:#ffffff;
+      --shadow:0 10px 25px rgba(0,0,0,0.08);
+      --radius:18px;
+      --max-width:1150px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg, #f4fbf7 0%, #eef8ff 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(92%, var(--max-width));
+      margin:auto;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(255,255,255,0.88);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 0;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      font-size:1.2rem;
+      color:var(--green-dark);
+    }
+
+    .brand small{
+      display:block;
+      color:var(--blue-dark);
+      font-weight:600;
+      font-size:0.76rem;
+      letter-spacing:0.4px;
+      margin-top:-3px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-weight:600;
+      font-size:0.95rem;
+    }
+
+    .hero{
+      padding:70px 0 50px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .hero-content h1{
+      font-size:clamp(2rem, 5vw, 3.4rem);
+      line-height:1.1;
+      margin-bottom:18px;
+    }
+
+    .hero-content h1 span{
+      color:var(--green-dark);
+    }
+
+    .hero-content p{
+      font-size:1.05rem;
+      color:var(--muted);
+      margin-bottom:24px;
+      max-width:700px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:13px 20px;
+      border-radius:999px;
+      font-weight:700;
+      transition:0.25s ease;
+    }
+
+    .btn-primary{
+      background:linear-gradient(90deg, var(--green), var(--blue));
+      color:white;
+      box-shadow:var(--shadow);
+    }
+
+    .btn-secondary{
+      border:2px solid rgba(31,122,224,0.2);
+      color:var(--blue-dark);
+      background:#fff;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .hero-card{
+      background:var(--white);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      top:-50px;
+      right:-50px;
+      width:180px;
+      height:180px;
+      background:radial-gradient(circle, rgba(31,184,106,0.18) 0%, rgba(31,122,224,0.08) 50%, transparent 70%);
+      border-radius:50%;
+    }
+
+    .stat{
+      background:linear-gradient(135deg, rgba(31,184,106,0.08), rgba(31,122,224,0.08));
+      border-radius:18px;
+      padding:18px;
+      margin-top:16px;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+
+    section{
+      padding:30px 0 60px;
+    }
+
+    .section-title{
+      font-size:2rem;
+      margin-bottom:12px;
+      text-align:center;
+    }
+
+    .section-subtitle{
+      text-align:center;
+      color:var(--muted);
+      max-width:760px;
+      margin:0 auto 34px;
+    }
+
+    .grid{
+      display:grid;
+      gap:22px;
+    }
+
+    .grid-3{
+      grid-template-columns:repeat(3, 1fr);
+    }
+
+    .grid-2{
+      grid-template-columns:repeat(2, 1fr);
+    }
+
+    .card{
+      background:var(--card);
+      padding:26px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(0,0,0,0.04);
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      color:var(--green-dark);
+    }
+
+    .card p{
+      color:var(--muted);
+    }
+
+    .icon-circle{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      margin-bottom:16px;
+      font-size:1.4rem;
+      background:linear-gradient(135deg, rgba(31,184,106,0.12), rgba(31,122,224,0.12));
+    }
+
+    .story{
+      background:linear-gradient(135deg, rgba(31,184,106,0.06), rgba(31,122,224,0.06));
+      border-radius:28px;
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.02rem;
+    }
+
+    .compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:18px;
+    }
+
+    .compare-box{
+      background:white;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+
+    .compare-box h4{
+      margin-bottom:12px;
+      font-size:1.1rem;
+    }
+
+    .compare-box ul{
+      padding-left:18px;
+      color:var(--muted);
+    }
+
+    .compare-box li{
+      margin-bottom:10px;
+    }
+
+    .mission-banner{
+      background:linear-gradient(120deg, var(--green-dark), var(--blue-dark));
+      color:white;
+      padding:36px;
+      border-radius:28px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .mission-banner h2{
+      margin-bottom:12px;
+      font-size:2rem;
+    }
+
+    .mission-banner p{
+      max-width:780px;
+      margin:auto;
+      opacity:0.95;
+    }
+
+    footer{
+      padding:30px 0 45px;
+      text-align:center;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .logo-svg{
+      width:54px;
+      height:54px;
+      flex-shrink:0;
+    }
+
+    .hero-logo{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .hero-logo h2{
+      font-size:1.9rem;
+      color:var(--green-dark);
+      line-height:1.1;
+    }
+
+    .hero-logo span{
+      color:var(--blue-dark);
+      font-size:0.95rem;
+      font-weight:600;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .compare{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:40px;
+      }
+
+      .nav{
+        justify-content:center;
+      }
+
+      .nav-links{
+        justify-content:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="GREENBLI logo">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1fb86a"/>
+              <stop offset="100%" stop-color="#1f7ae0"/>
+            </linearGradient>
+          </defs>
+          <circle cx="60" cy="60" r="54" fill="url(#g1)" opacity="0.12"/>
+          <path d="M62 18c16 9 24 24 24 40 0 20-13 35-34 42 8-9 11-20 10-31-1-13-8-24-20-31 5-9 11-15 20-20z" fill="url(#g1)"/>
+          <circle cx="42" cy="72" r="16" fill="#1f7ae0" opacity="0.9"/>
+          <text x="42" y="77" text-anchor="middle" font-size="12" font-family="Arial" fill="#fff" font-weight="700">CO₂</text>
+        </svg>
+        <div>
+          GREENBLI
+          <small>Green Fuel for a Better Future</small>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#values">Values</a>
+        <a href="#story">Story</a>
+        <a href="#services">What We Do</a>
+        <a href="#mission">Mission</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-logo">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1fb86a"/>
+                  <stop offset="100%" stop-color="#1f7ae0"/>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="54" fill="url(#g2)" opacity="0.12"/>
+              <path d="M62 18c16 9 24 24 24 40 0 20-13 35-34 42 8-9 11-20 10-31-1-13-8-24-20-31 5-9 11-15 20-20z" fill="url(#g2)"/>
+              <circle cx="42" cy="72" r="16" fill="#1f7ae0" opacity="0.92"/>
+              <text x="42" y="77" text-anchor="middle" font-size="12" font-family="Arial" fill="#fff" font-weight="700">CO₂</text>
+            </svg>
+            <div>
+              <h2>GREENBLI</h2>
+              <span>Inspired by clean, modern, eco-friendly branding</span>
+            </div>
+          </div>
+
+          <h1>Turning <span>CO₂ from the air</span> into cleaner energy for the planet.</h1>
+          <p>
+            GREENBLI is a company focused on capturing carbon dioxide from the air
+            and transforming it into methanol-based biofuels through biological processes.
+            Our purpose is simple: create energy solutions that help people while also helping the Earth.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#about" class="btn btn-primary">Learn More</a>
+            <a href="#mission" class="btn btn-secondary">Our Mission</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3 style="margin-bottom:10px; color: var(--blue-dark);">Why GREENBLI?</h3>
+          <p style="color: var(--muted);">
+            We believe energy and sustainability can go together.
+            Instead of relying on traditional fossil fuels, we use captured CO₂
+            in biological reactors to produce cleaner biofuels with lower environmental impact.
+          </p>
+
+          <div class="stat">
+            <strong style="display:block; margin-bottom:6px; color: var(--green-dark);">Environmental Focus</strong>
+            <span style="color: var(--muted);">Reducing greenhouse gases while producing useful fuel.</span>
+          </div>
+
+          <div class="stat">
+            <strong style="display:block; margin-bottom:6px; color: var(--green-dark);">Current Applications</strong>
+            <span style="color: var(--muted);">Ships, power generation, and future research for cars and motorcycles.</span>
+          </div>
+
+          <div class="stat">
+            <strong style="display:block; margin-bottom:6px; color: var(--green-dark);">Main Goal</strong>
+            <span style="color: var(--muted);">Produce green energy first — profit comes second.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-subtitle">
+          We are an innovative company committed to creating sustainable energy solutions by transforming carbon dioxide into valuable biofuels.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="icon-circle">🌍</div>
+            <h3>Who We Are</h3>
+            <p>
+              GREENBLI is a green energy company that captures CO₂ from the air
+              and uses biological reactors to produce methanol-based biofuels.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">⚗️</div>
+            <h3>What We Do</h3>
+            <p>
+              We transform greenhouse gases into cleaner fuel alternatives that
+              can support transportation and energy generation.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">💡</div>
+            <h3>Why It Matters</h3>
+            <p>
+              Our work helps reduce the greenhouse effect while offering a more sustainable
+              path for energy production.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="container">
+        <h2 class="section-title">Our Values</h2>
+        <p class="section-subtitle">
+          Our values guide every decision we make and every solution we build.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="icon-circle">🌱</div>
+            <h3>Care for the Environment</h3>
+            <p>
+              We are committed to protecting nature and promoting cleaner ways
+              to produce energy.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">♻️</div>
+            <h3>Reduce Greenhouse Effect</h3>
+            <p>
+              We aim to lower harmful emissions by capturing CO₂ and turning it
+              into something useful.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">🤝</div>
+            <h3>Responsibility</h3>
+            <p>
+              We believe companies should not only think about profit, but also
+              about the future of the planet and the people living on it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container">
+        <h2 class="section-title">Our Story</h2>
+        <p class="section-subtitle">
+          GREENBLI was born from concern, research, and hope for a better future.
+        </p>
+
+        <div class="story">
+          <p>
+            We were worried about the future of the planet and the growing impact of climate change.
+            Because of that concern, we started researching solutions to reduce the greenhouse effect.
+            During that process, we discovered a promising approach: using captured CO₂ in biological
+            reactors to create biofuels.
+          </p>
+          <br />
+          <p>
+            That discovery inspired us to build GREENBLI — a company that helps produce energy
+            while also helping the environment. Our story is driven by the idea that innovation
+            can be a powerful tool to protect our world.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-subtitle">
+          We create sustainable fuel alternatives for today, while researching more uses for tomorrow.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="icon-circle">🚢</div>
+            <h3>Biofuels for Ships</h3>
+            <p>
+              We sell biofuels designed to help power large sea ships with a lower environmental impact.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">🏭</div>
+            <h3>Power Generation</h3>
+            <p>
+              Our biofuels can also be used in combustion engines to produce electricity in power plants.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon-circle">🚗</div>
+            <h3>Future Research</h3>
+            <p>
+              We are investigating the use of our biofuels in cars and motorcycles to expand clean energy options.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">How We Are Different</h2>
+        <p class="section-subtitle">
+          Unlike traditional energy companies, our process is designed to work with the planet — not against it.
+        </p>
+
+        <div class="compare">
+          <div class="compare-box">
+            <h4 style="color:#9b1c1c;">Traditional Oil & Gas Companies</h4>
+            <ul>
+              <li>Depend on hydrocarbons extracted from the Earth</li>
+              <li>Require large investment and extraction costs</li>
+              <li>Have a major environmental impact</li>
+              <li>Contribute significantly to greenhouse gas emissions</li>
+            </ul>
+          </div>
+
+          <div class="compare-box">
+            <h4 style="color:var(--green-dark);">GREENBLI</h4>
+            <ul>
+              <li>Captures CO₂ from the air</li>
+              <li>Uses biological processes to create methanol biofuels</li>
+              <li>Works with lower environmental impact</li>
+              <li>Transforms a greenhouse gas into a useful energy source</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission">
+      <div class="container">
+        <div class="mission-banner">
+          <h2>Our Mission Going Forward</h2>
+          <p>
+            We want to help save the planet. Our first focus is always to produce green energy
+            that contributes to a healthier future. At GREENBLI, success is not measured only by profit,
+            but by the positive impact we can create for the environment and society.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>GREENBLI</strong> — About Us Page</p>
+      <p>Class exercise | Static webpage design</p>
+    </div>
+  </footer>
+
+</body>
+</html>
